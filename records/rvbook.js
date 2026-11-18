@@ -56,6 +56,8 @@ var RVBook = (function () {
 
   /* games */
   function decideWinners(players, lowWins) {
+    var explicit = players.some(function (p) { return typeof p.won === 'boolean'; });
+    if (explicit) { players.forEach(function (p) { p.won = p.won === true; }); return; }
     var best = null; players.forEach(function (p) { if (typeof p.score !== 'number') return; if (best === null || (lowWins ? p.score < best : p.score > best)) best = p.score; });
     players.forEach(function (p) { p.won = (best !== null && p.score === best); });
   }
@@ -64,7 +66,7 @@ var RVBook = (function () {
     var d = db(), id = rec.id || ('g' + uid());
     var i; for (i = 0; i < d.games.length; i++) if (d.games[i].id === id) return d.games[i];
     var players = (rec.players || []).filter(function (p) { return p && norm(p.name); }).map(function (p) {
-      return { pid: ensurePlayer(d, p.name), name: norm(p.name), score: (typeof p.score === 'number' && isFinite(p.score)) ? p.score : null };
+      var o = { pid: ensurePlayer(d, p.name), name: norm(p.name), score: (typeof p.score === 'number' && isFinite(p.score)) ? p.score : null }; if (typeof p.won === 'boolean') o.won = p.won; return o;
     });
     if (!players.length) return null;
     decideWinners(players, !!rec.lowWins);
@@ -77,7 +79,7 @@ var RVBook = (function () {
     if (!g) return null;
     if (patch.players) {
       g.players = patch.players.filter(function (p) { return p && norm(p.name); }).map(function (p) {
-        return { pid: ensurePlayer(d, p.name), name: norm(p.name), score: (typeof p.score === 'number' && isFinite(p.score)) ? p.score : null };
+        var o = { pid: ensurePlayer(d, p.name), name: norm(p.name), score: (typeof p.score === 'number' && isFinite(p.score)) ? p.score : null }; if (typeof p.won === 'boolean') o.won = p.won; return o;
       });
     }
     if (patch.at) g.at = patch.at; if (patch.meta) g.meta = patch.meta;
