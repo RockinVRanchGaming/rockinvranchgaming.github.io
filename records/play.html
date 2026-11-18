@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Record Book - Rockin' V Ranch Company Gaming</title>
+<meta name="theme-color" content="#14120D"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Record Book">
+<link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="icon" type="image/png" href="icon-192.png"><link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
+<style>
+:root{--bg:#14120D;--panel:#201D16;--panel2:#2A261D;--ink:#F1EDE0;--muted:#AFA793;--line:#3A3629;--gold:#B89A5E;--gold2:#E0C27C;--cream:#F1E8D3;--burg:#8B1A14;--burg2:#5E100C;--green:#5FA35A;--font:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}[hidden]{display:none!important}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;-webkit-text-size-adjust:100%}
+body{min-height:100vh;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+.band{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:12px;padding:calc(10px + env(safe-area-inset-top)) 14px 10px;background:linear-gradient(180deg,#000 0%,#1a1510 100%);border-bottom:2px solid var(--gold);box-shadow:0 2px 10px rgba(0,0,0,.6)}
+.band img{width:46px;height:46px;border-radius:12px;box-shadow:0 2px 8px rgba(0,0,0,.6)}
+.band>div{min-width:0;flex:1}.band h1{margin:0;white-space:nowrap;font-size:20px;font-weight:900;color:var(--gold2);letter-spacing:.02em;line-height:1.1}
+.band small{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:3px}
+.band .sp{flex:1}
+.ib{width:44px;height:44px;border-radius:12px;border:1px solid var(--line);background:var(--panel);display:grid;place-items:center}
+.ib svg{width:22px;height:22px;fill:none;stroke:var(--gold2);stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+main{padding:12px 14px;max-width:640px;margin:0 auto}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;display:flex;gap:6px;padding:8px 10px calc(8px + env(safe-area-inset-bottom));background:linear-gradient(0deg,#000,#1a1510);border-top:2px solid var(--gold)}
+.tab{flex:1;min-height:52px;border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--muted);font-weight:800;font-size:15px}
+.tab[aria-selected="true"]{background:linear-gradient(150deg,var(--gold2),var(--gold));color:#1a1208;border-color:transparent}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:2px 0 10px;scrollbar-width:none}.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;min-height:40px;padding:0 14px;border-radius:20px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font-weight:800;font-size:15px;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--burg);border-color:var(--gold);color:#fff}
+.chip.add{border-style:dashed;color:var(--gold2)}
+.day{margin:14px 0 6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.g{width:100%;text-align:left;display:flex;align-items:center;gap:12px;background:linear-gradient(160deg,#241e16,var(--panel));border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+.g .t{font-size:17px;font-weight:900;color:var(--gold2)}
+.g .w{font-size:15px;color:var(--ink);margin-top:2px}
+.g .w b{color:#fff}
+.g .meta{font-size:13px;color:var(--muted);margin-top:2px}
+.g .n{margin-left:auto;text-align:right;font-size:13px;color:var(--muted);white-space:nowrap}
+.g .n b{display:block;font-size:22px;color:var(--cream);font-weight:900;line-height:1}
+.crown{color:var(--gold2)}
+.empty{text-align:center;color:var(--muted);padding:40px 16px;line-height:1.5}
+.empty b{display:block;color:var(--gold2);font-size:20px;margin-bottom:8px}
+.p{width:100%;text-align:left;display:flex;align-items:center;gap:12px;background:linear-gradient(160deg,#241e16,var(--panel));border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin:0 0 10px}
+.av{width:46px;height:46px;border-radius:50%;background:linear-gradient(150deg,var(--gold2),var(--gold));color:#1a1208;display:grid;place-items:center;font-weight:900;font-size:19px;flex:0 0 auto}
+.av.me{background:linear-gradient(150deg,#a52a21,var(--burg2));color:#fff;border:2px solid var(--gold)}
+.p .nm{font-size:18px;font-weight:900}
+.p .st{font-size:13px;color:var(--muted);margin-top:2px}
+.p .pct{margin-left:auto;text-align:right}
+.p .pct b{display:block;font-size:22px;font-weight:900;color:var(--cream);line-height:1}
+.p .pct small{font-size:12px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+/* sheets */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:20}
+.sheet{position:fixed;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:var(--bg);border-top:2px solid var(--gold);border-radius:22px 22px 0 0;z-index:21;padding:14px 16px calc(20px + env(safe-area-inset-bottom));box-shadow:0 -6px 30px rgba(0,0,0,.7)}
+.sheet .top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.sheet h2{margin:0;font-size:22px;font-weight:900;color:var(--gold2);flex:1}
+.x{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--panel);font-size:18px;color:var(--ink)}
+.row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.row:last-child{border-bottom:0}
+.row .nm{flex:1;font-weight:800;font-size:17px}
+.row .sc{font-size:20px;font-weight:900;color:var(--cream);min-width:48px;text-align:right}
+.row input{width:86px;min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:800 18px var(--font);text-align:center}
+.row input.nm{width:auto;min-width:0;text-align:left;padding:0 10px}
+.stat{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:8px 0 12px}
+.stat div{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:10px 8px;text-align:center}
+.stat b{display:block;font-size:24px;font-weight:900;color:var(--cream);line-height:1.1}
+.stat small{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.h3{margin:14px 0 6px;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.btn{display:block;width:100%;min-height:50px;border:0;border-radius:25px;margin:10px 0 0;font-weight:900;font-size:17px;background:linear-gradient(150deg,var(--gold2),var(--gold));color:#1a1208;box-shadow:0 3px 8px rgba(0,0,0,.4),inset 0 2px 0 rgba(255,255,255,.35)}
+.btn.sec{background:var(--panel);color:var(--ink);border:1px solid var(--line);box-shadow:none}
+.btn.dng{background:linear-gradient(150deg,#b4261c,var(--burg2));color:#fff}
+.btn:disabled{opacity:.45}
+.li{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid var(--line)}.li span{flex:1}
+.li input{min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:800 17px var(--font);padding:0 10px;width:170px}
+.sel{min-height:44px;border-radius:10px;border:1px solid var(--line);background:var(--panel);color:var(--ink);font:800 16px var(--font);padding:0 8px;max-width:190px}
+.toast{position:fixed;left:50%;bottom:calc(92px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#000;color:var(--cream);border:1px solid var(--gold);border-radius:14px;padding:10px 14px;z-index:30;display:flex;gap:12px;align-items:center;font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.6);max-width:92vw}
+.toast button{border:0;background:var(--gold2);color:#1a1208;border-radius:10px;padding:8px 12px;font-weight:900}
+.note{font-size:14px;color:var(--muted);line-height:1.45;margin:6px 0}
+.vs{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--line);font-weight:800}
+.vs .bar{flex:1;height:10px;border-radius:5px;background:var(--panel);overflow:hidden;border:1px solid var(--line)}
+.vs .bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold2),var(--gold))}
+.vs .r{min-width:62px;text-align:right;color:var(--cream)}
+#splash{position:fixed;inset:0;z-index:50;background:#000;display:grid;place-items:center;transition:opacity .4s}
+#splash img{width:min(60vw,240px);border-radius:28px;box-shadow:0 0 0 3px var(--gold),0 10px 40px rgba(0,0,0,.8)}
+#splash.go{opacity:0;pointer-events:none}
+@media (max-width:360px){.band h1{font-size:18px}.band small{letter-spacing:.12em;font-size:10px}.band img{width:40px;height:40px}}
+</style></head><body>
+<div id="splash" role="img" aria-label="Rockin' V Ranch Company Gaming"><img src="icon-512.png" alt=""></div>
+<header class="band"><img src="icon-192.png" alt=""><div><h1>Record Book</h1><small>Rockin' V Ranch Company Gaming</small></div><span class="sp"></span>
+  <button class="ib" id="bAdd" type="button" aria-label="Add a game by hand"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button>
+  <button class="ib" id="bMenu" type="button" aria-label="Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+</header>
+<main>
+  <section id="vGames">
+    <div class="chips" id="gameChips"></div>
+    <div class="chips" id="playerChips"></div>
+    <div id="gameList"></div>
+  </section>
+  <section id="vPlayers" hidden>
+    <div class="chips" id="statChips"></div>
+    <div id="playerList"></div>
+  </section>
+</main>
+<nav class="tabs" role="tablist"><button class="tab" role="tab" data-v="Games" aria-selected="true" type="button">Games</button><button class="tab" role="tab" data-v="Players" type="button">Players</button></nav>
+<div id="scrim" class="scrim" hidden></div>
+<section id="sheet" class="sheet" hidden role="dialog" aria-modal="true"></section>
+<div id="toast" class="toast" hidden><span id="toastmsg"></span><button type="button" id="undo" hidden>Undo</button></div>
+<script src="rvbook.js"></script>
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  var view = 'Games', gameF = '', playerF = '', statF = '', undoFn = null, toastT = null;
+  var GAME_NAMES = { qwixx: 'Qwixx', yahtzee: 'Yahtzee', handfoot: 'Hand & Foot', wizard: 'Wizard', skyjo: 'Skyjo', dalmuti: 'Great Dalmuti', shanghai: 'Shanghai Rummy', pinochle: 'Pinochle', ohhell: 'Oh Hell', spades: 'Spades', hearts: 'Hearts', phase10: 'Phase 10', rummy: 'Rummy 500', mextrain: 'Mexican Train', farkle: 'Farkle', bunco: 'Bunco', cribbage: 'Cribbage', other: 'Other' };
+  var LOW = { skyjo: 1, hearts: 1, dalmuti: 1, shanghai: 1, phase10: 0, ohhell: 0, mextrain: 1, rummy: 0 };
+
+  function fmtDate(iso) { var d = new Date(iso), now = new Date(), o = { month: 'short', day: 'numeric' }; if (d.getFullYear() !== now.getFullYear()) o.year = 'numeric'; return d.toLocaleDateString(undefined, o); }
+  function dayKey(iso) { var d = new Date(iso), t = new Date(), y = new Date(); y.setDate(t.getDate() - 1); if (d.toDateString() === t.toDateString()) return 'Today'; if (d.toDateString() === y.toDateString()) return 'Yesterday'; return d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric', year: d.getFullYear() !== t.getFullYear() ? 'numeric' : undefined }); }
+  function initials(n) { var p = n.trim().split(/\s+/); return (p[0][0] + (p[1] ? p[1][0] : '')).toUpperCase(); }
+  function toast(msg, undo) { $('toastmsg').textContent = msg; undoFn = undo || null; $('undo').hidden = !undo; $('toast').hidden = false; clearTimeout(toastT); toastT = setTimeout(function () { $('toast').hidden = true; undoFn = null; }, undo ? 6000 : 2500); }
+  $('undo').addEventListener('click', function () { if (undoFn) undoFn(); $('toast').hidden = true; undoFn = null; renderAll(); });
+
+  function chip(label, on, data) { return '<button type="button" class="chip" aria-pressed="' + (on ? 'true' : 'false') + '" ' + data + '>' + esc(label) + '</button>'; }
+  function gamesUsed() { var m = {}; RVBook.games().forEach(function (g) { m[g.game] = g.title; }); return m; }
+
+  function renderGames() {
+    var gs = RVBook.games(), used = gamesUsed(), k, h = chip('All games', !gameF, 'data-g=""');
+    for (k in used) h += chip(used[k], gameF === k, 'data-g="' + esc(k) + '"');
+    $('gameChips').innerHTML = h;
+    var ps = RVBook.players().sort(function (a, b) { return a.name.localeCompare(b.name); }), o = RVBook.owner();
+    h = chip('Everyone', !playerF, 'data-p=""'); ps.forEach(function (p) { h += chip(p.name + (o && o.pid === p.pid ? ' (me)' : ''), playerF === p.pid, 'data-p="' + p.pid + '"'); });
+    $('playerChips').innerHTML = ps.length > 1 ? h : '';
+    var list = gs.filter(function (g) { return (!gameF || g.game === gameF) && (!playerF || g.players.some(function (p) { return p.pid === playerF; })); });
+    if (!list.length) { $('gameList').innerHTML = '<div class="empty"><b>' + (gs.length ? 'Nothing matches those filters.' : 'No games yet.') + '</b>' + (gs.length ? '' : 'Finish a game in any Rockin\' V score card and it lands here on its own. Or tap + to add one by hand.') + '</div>'; return; }
+    var out = '', day = '';
+    list.forEach(function (g) {
+      var dk = dayKey(g.at); if (dk !== day) { day = dk; out += '<div class="day">' + esc(dk) + '</div>'; }
+      var winners = g.players.filter(function (p) { return p.won; }), solo = g.players.length === 1;
+      var wtxt = solo ? esc(RVBook.nameOf(g.players[0].pid)) + ' scored' : (winners.length ? '<span class="crown">&#9819;</span> <b>' + esc(winners.map(function (p) { return RVBook.nameOf(p.pid); }).join(' &amp; ')) + '</b>' + (winners.length > 1 ? ' tie' : '') : 'No scores');
+      var top = solo ? g.players[0].score : (winners.length ? winners[0].score : null);
+      var others = g.players.filter(function (p) { return !p.won; }).map(function (p) { return esc(RVBook.nameOf(p.pid)) + ' ' + (p.score === null ? '-' : p.score); }).join(' · ');
+      out += '<button type="button" class="g" data-open="' + g.id + '"><div><div class="t">' + esc(g.title) + '</div><div class="w">' + wtxt + '</div>' + (others ? '<div class="meta">' + others + '</div>' : '') + '</div><div class="n"><b>' + (top === null ? '-' : top) + '</b>' + (solo ? 'points' : (g.lowWins ? 'low wins' : 'to win')) + '</div></button>';
+    });
+    $('gameList').innerHTML = out;
+  }
+  function renderPlayers() {
+    var used = gamesUsed(), k, h = chip('All games', !statF, 'data-s=""'); for (k in used) h += chip(used[k], statF === k, 'data-s="' + esc(k) + '"'); $('statChips').innerHTML = h;
+    var o = RVBook.owner(), ps = RVBook.players().map(function (p) { p.s = RVBook.stats(p.pid, statF || null); return p; }).filter(function (p) { return p.s.games || (o && o.pid === p.pid); })
+      .sort(function (a, b) { return b.s.wins - a.s.wins || b.s.games - a.s.games || a.name.localeCompare(b.name); });
+    if (!ps.length) { $('playerList').innerHTML = '<div class="empty"><b>Nobody on the board yet.</b>Players show up here after their first game.</div>'; return; }
+    $('playerList').innerHTML = ps.map(function (p) {
+      var me = o && o.pid === p.pid, s = p.s;
+      return '<button type="button" class="p" data-player="' + p.pid + '"><div class="av' + (me ? ' me' : '') + '">' + esc(initials(p.name)) + '</div><div><div class="nm">' + esc(p.name) + (me ? ' <small style="color:var(--muted)">(me)</small>' : '') + '</div><div class="st">' + s.games + (s.games === 1 ? ' game' : ' games') + ' · ' + s.wins + (s.wins === 1 ? ' win' : ' wins') + (s.bestStreak > 1 ? ' · best streak ' + s.bestStreak : '') + '</div></div><div class="pct"><b>' + s.winPct + '%</b><small>wins</small></div></button>';
+    }).join('');
+  }
+  function renderAll() { $('vGames').hidden = view !== 'Games'; $('vPlayers').hidden = view !== 'Players'; [].forEach.call(document.querySelectorAll('.tab'), function (t) { t.setAttribute('aria-selected', t.getAttribute('data-v') === view ? 'true' : 'false'); }); if (view === 'Games') renderGames(); else renderPlayers(); }
+
+  /* sheets */
+  function openSheet(html) { $('sheet').innerHTML = html; $('sheet').hidden = false; $('scrim').hidden = false; $('sheet').scrollTop = 0; }
+  function closeSheet() { $('sheet').hidden = true; $('scrim').hidden = true; }
+  $('scrim').addEventListener('click', closeSheet);
+
+  function gameSheet(id) {
+    var g = null; RVBook.games().forEach(function (x) { if (x.id === id) g = x; }); if (!g) return;
+    var rows = g.players.slice().sort(function (a, b) { if (a.score === null) return 1; if (b.score === null) return -1; return g.lowWins ? a.score - b.score : b.score - a.score; }).map(function (p) {
+      return '<div class="row"><span class="nm">' + (p.won && g.players.length > 1 ? '<span class="crown">&#9819;</span> ' : '') + esc(RVBook.nameOf(p.pid)) + '</span><span class="sc">' + (p.score === null ? '-' : p.score) + '</span></div>';
+    }).join('');
+    openSheet('<div class="top"><h2>' + esc(g.title) + '</h2><button class="x" type="button" data-close>&#10005;</button></div><div class="note">' + esc(new Date(g.at).toLocaleString(undefined, { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' })) + (g.lowWins ? ' · lowest score wins' : '') + '</div>' + rows +
+      '<button class="btn sec" type="button" data-edit="' + g.id + '">Fix names or scores</button><button class="btn sec" type="button" data-share="' + g.id + '">Share this game</button><button class="btn dng" type="button" data-del="' + g.id + '">Delete this game</button>');
+  }
+  function editSheet(id, isNew) {
+    var g = null; if (!isNew) RVBook.games().forEach(function (x) { if (x.id === id) g = x; });
+    var players = g ? g.players.map(function (p) { return { name: RVBook.nameOf(p.pid), score: p.score }; }) : [];
+    var o = RVBook.owner(); if (isNew) { if (o) players.push({ name: o.name, score: null }); players.push({ name: '', score: null }); }
+    var sugg = RVBook.suggest(10).filter(function (n) { return !players.some(function (p) { return p.name.toLowerCase() === n.toLowerCase(); }); });
+    var gameSel = ''; if (isNew) { var k; gameSel = '<div class="li"><span>Game</span><select class="sel" id="eGame">'; for (k in GAME_NAMES) gameSel += '<option value="' + k + '"' + (k === 'qwixx' ? ' selected' : '') + '>' + esc(GAME_NAMES[k]) + '</option>'; gameSel += '</select></div><div class="li"><span>Who wins</span><select class="sel" id="eLow"><option value="0">Highest score</option><option value="1">Lowest score</option></select></div><div class="li"><span>When</span><input type="date" id="eDate" style="width:170px" value="' + new Date(Date.now() - new Date().getTimezoneOffset() * 6e4).toISOString().slice(0, 10) + '"></div>'; }
+    var rows = players.map(function (p, i) { return '<div class="row" data-i="' + i + '"><input class="nm" placeholder="Name" maxlength="20" value="' + esc(p.name) + '" aria-label="Player name"><input type="number" inputmode="numeric" placeholder="Score" value="' + (p.score === null ? '' : p.score) + '" aria-label="Score"><button class="x" type="button" data-rm aria-label="Remove">&#8722;</button></div>'; }).join('');
+    openSheet('<div class="top"><h2>' + (isNew ? 'Add a game' : 'Fix this game') + '</h2><button class="x" type="button" data-close>&#10005;</button></div>' + gameSel + '<div class="h3">Players and scores</div><div id="eRows">' + rows + '</div>' +
+      (sugg.length ? '<div class="h3">Tap to add</div><div class="chips" id="eSugg">' + sugg.map(function (n) { return '<button type="button" class="chip add" data-sugg="' + esc(n) + '">+ ' + esc(n) + '</button>'; }).join('') + '</div>' : '') +
+      '<button class="btn sec" type="button" id="eMore">+ Another player</button><button class="btn" type="button" id="eSave" data-id="' + (g ? g.id : '') + '">' + (isNew ? 'Save to the book' : 'Save changes') + '</button>');
+  }
+  function addRow(name) { var d = document.createElement('div'); d.className = 'row'; d.innerHTML = '<input class="nm" placeholder="Name" maxlength="20" value="' + esc(name || '') + '" aria-label="Player name"><input type="number" inputmode="numeric" placeholder="Score" aria-label="Score"><button class="x" type="button" data-rm aria-label="Remove">&#8722;</button>'; $('eRows').appendChild(d); if (!name) d.querySelector('input').focus(); else d.querySelector('input[type=number]').focus(); }
+  function readRows() { return [].map.call($('eRows').querySelectorAll('.row'), function (r) { var n = r.querySelector('input.nm').value, s = r.querySelector('input[type=number]').value; return { name: n, score: s === '' ? null : +s }; }).filter(function (p) { return RVBook.norm(p.name); }); }
+
+  function playerSheet(pid) {
+    var o = RVBook.owner(), me = o && o.pid === pid, name = RVBook.nameOf(pid), s = RVBook.stats(pid), k, by = '';
+    for (k in s.byGame) { var b = s.byGame[k]; by += '<div class="row"><span class="nm">' + esc(b.title) + '</span><span class="note" style="margin:0">' + b.games + (b.games === 1 ? ' game' : ' games') + ' · ' + b.wins + (b.wins === 1 ? ' win' : ' wins') + (b.best !== null ? ' · best ' + b.best : '') + '</span></div>'; }
+    var h2h = RVBook.players().filter(function (p) { return p.pid !== pid; }).map(function (p) { p.h = RVBook.headToHead(pid, p.pid); return p; }).filter(function (p) { return p.h.games; }).sort(function (a, b) { return b.h.games - a.h.games; })
+      .map(function (p) { var pct = Math.round(p.h.aWins / p.h.games * 100); return '<div class="vs"><span style="min-width:90px">vs ' + esc(p.name) + '</span><span class="bar"><i style="width:' + pct + '%"></i></span><span class="r">' + p.h.aWins + '&ndash;' + p.h.bWins + (p.h.ties ? '&ndash;' + p.h.ties : '') + '</span></div>'; }).join('');
+    var others = RVBook.players().filter(function (p) { return p.pid !== pid; }).sort(function (a, b) { return a.name.localeCompare(b.name); });
+    openSheet('<div class="top"><h2>' + esc(name) + (me ? ' <small style="color:var(--muted);font-size:14px">(me)</small>' : '') + '</h2><button class="x" type="button" data-close>&#10005;</button></div>' +
+      '<div class="stat"><div><b>' + s.games + '</b><small>games</small></div><div><b>' + s.wins + '</b><small>wins</small></div><div><b>' + s.winPct + '%</b><small>win rate</small></div></div>' +
+      (s.bestStreak > 1 ? '<div class="note">Best win streak: ' + s.bestStreak + (s.streak > 1 ? ' · on a ' + s.streak + '-game streak right now' : '') + '</div>' : '') +
+      (by ? '<div class="h3">By game</div>' + by : '') + (h2h ? '<div class="h3">Head to head (wins)</div>' + h2h : '') +
+      '<div class="h3">Housekeeping</div><div class="li"><span>Name</span><input id="pName" maxlength="20" value="' + esc(name) + '"><button class="chip" type="button" data-rename="' + pid + '">Save</button></div>' +
+      (others.length ? '<div class="li"><span>Same person as</span><select class="sel" id="pMerge"><option value="">Pick someone</option>' + others.map(function (p) { return '<option value="' + p.pid + '">' + esc(p.name) + '</option>'; }).join('') + '</select><button class="chip" type="button" data-merge="' + pid + '">Merge</button></div><div class="note">Merge folds the other name into this one; all their games move here.</div>' : '') +
+      (!me ? '<button class="btn sec" type="button" data-setme="' + pid + '">This is me</button>' : '') +
+      (!s.games ? '<button class="btn dng" type="button" data-rmp="' + pid + '">Remove from the book</button>' : ''));
+  }
+  function settingsSheet() {
+    var o = RVBook.owner();
+    openSheet('<div class="top"><h2>Record book settings</h2><button class="x" type="button" data-close>&#10005;</button></div>' +
+      '<div class="li"><span>What the book calls you</span><input id="sOwner" maxlength="20" placeholder="Your name" value="' + esc(o ? o.name : '') + '"><button class="chip" type="button" id="sOwnerSave">Save</button></div>' +
+      '<div class="note">Your name is pre-filled in every score card on this phone. Change it any time; your games and stats follow you.</div>' +
+      '<div class="h3">Your book</div><div class="note">' + RVBook.count() + (RVBook.count() === 1 ? ' game' : ' games') + ', ' + RVBook.players().length + ' players, stored on this phone.</div>' +
+      '<button class="btn sec" type="button" id="sCsv">Export spreadsheet (CSV)</button><button class="btn sec" type="button" id="sJson">Back up the whole book</button><button class="btn sec" type="button" id="sImport">Restore from a backup</button><input type="file" id="sFile" accept=".json,application/json" hidden>' +
+      '<div class="h3">About</div><div class="note">Every Rockin\' V score card on this phone writes to this one book. Rockin\' V Ranch Company Gaming.</div>');
+  }
+
+  function download(name, text, type) {
+    var blob = new Blob([text], { type: type || 'text/plain' }), file;
+    try { file = new File([blob], name, { type: blob.type }); } catch (e) {}
+    if (file && navigator.canShare && navigator.canShare({ files: [file] })) { navigator.share({ files: [file], title: name }).catch(function () {}); return; }
+    var a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+  }
+  function shareGame(g) {
+    var lines = g.players.slice().sort(function (a, b) { return g.lowWins ? a.score - b.score : b.score - a.score; }).map(function (p) { return (p.won && g.players.length > 1 ? '♛ ' : '') + RVBook.nameOf(p.pid) + ': ' + (p.score === null ? '-' : p.score); });
+    var txt = g.title + ' · ' + fmtDate(g.at) + '\n' + lines.join('\n') + '\n— Rockin\' V Record Book';
+    if (navigator.share) navigator.share({ text: txt }).catch(function () {}); else { try { navigator.clipboard.writeText(txt); toast('Copied to clipboard'); } catch (e) {} }
+  }
+
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    if (b.hasAttribute('data-close')) { closeSheet(); return; }
+    if (b.hasAttribute('data-v')) { view = b.getAttribute('data-v'); renderAll(); return; }
+    if (b.hasAttribute('data-g')) { gameF = b.getAttribute('data-g'); renderGames(); return; }
+    if (b.hasAttribute('data-p')) { playerF = b.getAttribute('data-p'); renderGames(); return; }
+    if (b.hasAttribute('data-s')) { statF = b.getAttribute('data-s'); renderPlayers(); return; }
+    if (b.hasAttribute('data-open')) { gameSheet(b.getAttribute('data-open')); return; }
+    if (b.hasAttribute('data-player')) { playerSheet(b.getAttribute('data-player')); return; }
+    if (b.id === 'bMenu') { settingsSheet(); return; }
+    if (b.id === 'bAdd') { editSheet(null, true); return; }
+    if (b.hasAttribute('data-edit')) { editSheet(b.getAttribute('data-edit'), false); return; }
+    if (b.hasAttribute('data-share')) { RVBook.games().forEach(function (g) { if (g.id === b.getAttribute('data-share')) shareGame(g); }); return; }
+    if (b.hasAttribute('data-del')) {
+      if (b.getAttribute('data-armed')) { var id = b.getAttribute('data-del'), snap = null; RVBook.games().forEach(function (g) { if (g.id === id) snap = g; }); RVBook.removeGame(id); closeSheet(); renderAll(); toast('Game deleted', function () { if (snap) RVBook.addGame({ id: snap.id, game: snap.game, title: snap.title, lowWins: snap.lowWins, at: snap.at, meta: snap.meta, players: snap.players.map(function (p) { return { name: RVBook.nameOf(p.pid) || p.name, score: p.score }; }) }); }); }
+      else { b.setAttribute('data-armed', '1'); b.textContent = 'Tap again to delete'; setTimeout(function () { b.removeAttribute('data-armed'); b.textContent = 'Delete this game'; }, 3000); }
+      return;
+    }
+    if (b.hasAttribute('data-rm')) { b.closest('.row').remove(); return; }
+    if (b.id === 'eMore') { addRow(''); return; }
+    if (b.hasAttribute('data-sugg')) { addRow(b.getAttribute('data-sugg')); b.remove(); return; }
+    if (b.id === 'eSave') {
+      var ps = readRows(); if (!ps.length) { toast('Add at least one name'); return; }
+      if (b.getAttribute('data-id')) { RVBook.updateGame(b.getAttribute('data-id'), { players: ps }); toast('Saved'); }
+      else { var gk = $('eGame').value, at = $('eDate').value ? new Date($('eDate').value + 'T12:00:00').toISOString() : undefined; RVBook.addGame({ game: gk, title: GAME_NAMES[gk], lowWins: $('eLow').value === '1', at: at, players: ps, meta: { by: 'hand' } }); toast('Added to the book'); }
+      closeSheet(); renderAll(); return;
+    }
+    if (b.hasAttribute('data-rename')) { var nn = $('pName').value; if (RVBook.rename(b.getAttribute('data-rename'), nn)) { toast('Renamed'); playerSheet(b.getAttribute('data-rename')); renderAll(); } return; }
+    if (b.hasAttribute('data-merge')) { var keep = b.getAttribute('data-merge'), drop = $('pMerge').value; if (!drop) { toast('Pick who to merge'); return; } if (b.getAttribute('data-armed')) { RVBook.merge(keep, drop); toast('Merged'); playerSheet(keep); renderAll(); } else { b.setAttribute('data-armed', '1'); b.textContent = 'Sure?'; setTimeout(function () { b.removeAttribute('data-armed'); b.textContent = 'Merge'; }, 3000); } return; }
+    if (b.hasAttribute('data-setme')) { var o0 = RVBook.owner(), pid = b.getAttribute('data-setme'); if (o0 && o0.pid !== pid && RVBook.stats(o0.pid).games === 0) { RVBook.merge(pid, o0.pid); } try { localStorage.setItem('rv-owner-v1', JSON.stringify({ pid: pid, name: RVBook.nameOf(pid) })); } catch (x) {} toast('That\'s you now'); playerSheet(pid); renderAll(); return; }
+    if (b.hasAttribute('data-rmp')) { RVBook.removePlayer(b.getAttribute('data-rmp')); closeSheet(); renderAll(); toast('Removed'); return; }
+    if (b.id === 'sOwnerSave') { var on = $('sOwner').value; if (RVBook.setOwner(on)) { toast('Saved'); renderAll(); } return; }
+    if (b.id === 'sCsv') { download('Rockin V Record Book.csv', RVBook.csv(), 'text/csv'); return; }
+    if (b.id === 'sJson') { download('Rockin V Record Book backup.json', RVBook.exportJSON(), 'application/json'); return; }
+    if (b.id === 'sImport') { $('sFile').click(); return; }
+  });
+  document.addEventListener('change', function (e) {
+    if (e.target.id === 'sFile' && e.target.files[0]) { var fr = new FileReader(); fr.onload = function () { var r = RVBook.importJSON(fr.result); toast(r.ok ? 'Restored ' + r.added + ' games (' + r.skipped + ' already here)' : r.err); closeSheet(); renderAll(); }; fr.readAsText(e.target.files[0]); }
+  });
+  window.addEventListener('storage', function (e) { if (e.key === RVBook.K) renderAll(); });
+  document.addEventListener('visibilitychange', function () { if (!document.hidden) renderAll(); });
+
+  var q = location.search.replace('?', '').split('&'); q.forEach(function (kv) { var p = kv.split('='); if (p[0] === 'game') gameF = decodeURIComponent(p[1] || ''); if (p[0] === 'tab' && p[1] === 'players') view = 'Players'; });
+  renderAll();
+  setTimeout(function () { $('splash').classList.add('go'); }, 650);
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js').catch(function () {});
+})();
+</script>
+</body></html>
